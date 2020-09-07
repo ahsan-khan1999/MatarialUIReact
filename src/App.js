@@ -7,7 +7,8 @@ import { lightBlue } from '@material-ui/core/colors';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import AppBar from './AppBar'
-
+import BarChart from './BarChart'
+import LineChart from './LineChart'
 const useStyles = makeStyles((theme) => ({
   root: {
     // display: 'flex',
@@ -51,8 +52,11 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
   return (
-    <div>
-      <AppBar />
+    <div >
+
+      <BarChart />
+      {/* <LineChart /> */}
+      {/* <AppBar />
       
     <div className={classes.root}>
       
@@ -75,7 +79,7 @@ function App() {
       </div>
         </Paper>
       {/* <Paper variant="outlined" square /> */}
-    </div>
+     {/* } */}
     </div>
   );
 }
