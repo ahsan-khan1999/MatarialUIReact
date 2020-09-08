@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React,{useState} from 'react';
 import logo from './logo.svg';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -42,21 +42,47 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   butt: {
+    
     '& > *': {
       margin: theme.spacing(1),
       width:'90%',
+      
     },
   },
 }));
 
 function App() {
   const classes = useStyles();
+  let [userName,setUserName] = useState('');
+  let [password,setPassword] = useState('');
+
+  const addUser = () => {
+    if(!userName ){
+      alert('Enter UserName ')
+      setUserName('')
+      setPassword('')
+      return false;
+    }
+    else if(!password){
+      alert('Enter Password ')
+      setUserName('')
+      setPassword('')
+      return false;
+    }
+    else{
+      console.log('Successfully Log In' , userName,password)
+      setUserName('')
+      setPassword('')
+    }
+  }
+
+  // console.log(us)
   return (
     <div >
 
-      <BarChart />
+      {/* <BarChart /> */}
       {/* <LineChart /> */}
-      {/* <AppBar />
+       <AppBar />
       
     <div className={classes.root}>
       
@@ -64,24 +90,28 @@ function App() {
         <h1>Login</h1>
         <hr />
         <br />
-        <br />
-        <br />
-        <br />
         <form className={classes.text} noValidate autoComplete="off">
-        <TextField id="outlined-basic" label="User Name" variant="outlined"/>
+        <TextField id="outlined-basic" label="User Name" variant="outlined" required
+        value={userName}
+        onChange={(e) => setUserName(e.target.value)}
+        />
         <br />
-        <TextField id="outlined-basic" label="Password" variant="outlined" />
+        <TextField id="outlined-basic" label="Password" variant="outlined" type='Password' required
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        />
         </form>
         <div className={classes.butt}>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" onClick={() => addUser()}>
         LOGIN
       </Button>
       </div>
         </Paper>
-      {/* <Paper variant="outlined" square /> */}
-     {/* } */}
+     
+     }
     </div>
-  );
+</div>
+);
 }
 
 export default App;
