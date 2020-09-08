@@ -73,6 +73,7 @@ function App() {
       console.log('Successfully Log In' , userName,password)
       setUserName('')
       setPassword('')
+      return true;
     }
   }
 
@@ -82,7 +83,7 @@ function App() {
 
       {/* <BarChart /> */}
       {/* <LineChart /> */}
-       <AppBar />
+       <AppBar addUser={ addUser} />
       
     <div className={classes.root}>
       

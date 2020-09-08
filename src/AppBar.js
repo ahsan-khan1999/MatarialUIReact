@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,33 +9,43 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
+    root: {
+        flexGrow: 1,
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    title: {
+        flexGrow: 1,
+    },
 }));
 
-export default function ButtonAppBar() {
-  const classes = useStyles();
+export default function ButtonAppBar({ addUser }) {
+    const classes = useStyles();
+    let [butt, setButt] = useState('LOGIN');
+    const changeValue = () => {
+        if (addUser()) {
+            setButt('LOGOUT')
+        }
+        else {
+            setButt('LOGIN')
+        }
+    }
 
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
+    return (
+        <div className={classes.root}>
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" className={classes.title}>
+                        News
           </Typography>
-          
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
+                    {/* {changeValue()} */}
+                    <Button color="inherit" onClick={() => changeValue()}>{butt}</Button>
+                </Toolbar>
+            </AppBar>
+        </div>
+    );
 }
